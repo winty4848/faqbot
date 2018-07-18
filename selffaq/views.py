@@ -43,7 +43,7 @@ def message(request):
             }
         })
 
-    elif player_choice == '기억나는 학교 수업':
+    elif player_choice == '기억에 남는 학교 수업':
         return JsonResponse({
             'message': {
                 'text': '생각해보니 들은 학교수업이 꽤 많군요... 다음 중 어느 과목의 후기가 궁금하신가요?'
@@ -116,7 +116,43 @@ def message(request):
             },
             'keyboard': {
                 'type': 'buttons',
-                'buttons': ['가위', '바위', '보']
+                'buttons': ['가위', '바위', '보', '전적 초기화']
+            }
+        })
+
+    elif player_choice == '전적 초기화':
+        return JsonResponse({
+            'message': {
+                'text': '정말로 전적을 초기화하시겠습니까? 돌이킬수 없어요...'
+            },
+            'keyboard': {
+                'type': 'buttons',
+                'buttons': ['초기화 가즈아', '안하겠습니다.']
+            }
+        })
+
+    elif player_choice == '초기화 가즈아':
+        Game.objects.filter(user_key=now_user_key).update(win=0)
+        Game.objects.filter(user_key=now_user_key).update(draw=0)
+        Game.objects.filter(user_key=now_user_key).update(lose=0)
+        return JsonResponse({
+            'message': {
+                'text': '전적이 초기화되었습니다...'
+            },
+            'keyboard': {
+                'type': 'buttons',
+                'buttons': ['저의 생일', '취미', '기억에 남는 학교 수업', '가위바위보 게임']
+            }
+        })
+
+    elif player_choice == '안하겠습니다':
+        return JsonResponse({
+            'message': {
+                'text': '잘 생각하셨어요 ^.^'
+            },
+            'keyboard': {
+                'type': 'buttons',
+                'buttons': ['저의 생일', '취미', '기억에 남는 학교 수업', '가위바위보 게임']
             }
         })
 
