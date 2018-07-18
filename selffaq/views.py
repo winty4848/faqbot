@@ -10,7 +10,7 @@ from django.db.models import F
 def keyboard(request):
     return JsonResponse({
         'type': 'buttons',
-        'buttons': ['저의 생일', '취미', '기억나는 학교 수업', '가위바위보 게임']
+        'buttons': ['저의 생일', '취미', '기억에 남는 학교 수업', '가위바위보 게임']
     })
 
 
@@ -105,7 +105,7 @@ def message(request):
             },
             'keyboard': {
                 'type': 'buttons',
-                'buttons': ['저의 생일', '취미', '기억나는 학교 수업', '가위바위보 게임']
+                'buttons': ['저의 생일', '취미', '기억에 남는 학교 수업', '가위바위보 게임']
             }
         })
 
