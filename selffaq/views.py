@@ -127,7 +127,7 @@ def message(request):
             },
             'keyboard': {
                 'type': 'buttons',
-                'buttons': ['초기화 가즈아', '안하겠습니다.']
+                'buttons': ['초기화 가즈아', '안하겠습니다']
             }
         })
 
@@ -137,7 +137,7 @@ def message(request):
         Game.objects.filter(user_key=now_user_key).update(lose=0)
         return JsonResponse({
             'message': {
-                'text': '전적이 초기화되었습니다...'
+                'text': '전적이 초기화되었습니다..'
             },
             'keyboard': {
                 'type': 'buttons',
